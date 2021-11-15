@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Context path="">
-    <Environment name="net.sf.barefoot.context.xml.foo" type="java.lang.String" value="foo value"/>
-    <Environment name="net.sf.barefoot.context.xml.bar" type="java.lang.String" value="bar value"/>
-    <Resource driverClassName="${spring.datasource.driver-class-name}" factory="org.apache.commons.dbcp2.BasicDataSourceFactory" name="jdbc/dbcp" type="javax.sql.DataSource" url="${spring.datasource.url}"/>
-    <Resource driverClassName="${spring.datasource.driver-class-name}" factory="com.zaxxer.hikari.HikariJNDIFactory" jdbcUrl="${spring.datasource.url}" name="jdbc/hikari" type="javax.sql.DataSource"/>
-    <Resource factory="net.sf.barefoot.context.jakarta.BarefootServletContextFactory" name="barefoot/context" path="" type="net.sf.barefoot.context.AbstractServletContext"/>
-</Context>
