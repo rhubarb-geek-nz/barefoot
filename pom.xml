@@ -28,7 +28,11 @@
         <module>barefoot-context-xml-azure</module>
         <module>barefoot-context-xml-google</module>
         <module>barefoot-example-bean</module>
+        <module>barefoot-example-boot</module>
         <module>barefoot-example-boot-app</module>
+        <module>barefoot-example-boot-aws</module>
+        <module>barefoot-example-boot-azure</module>
+        <module>barefoot-example-boot-google</module>
         <module>barefoot-example-boot-war</module>
         <module>barefoot-example-cloud-aws</module>
         <module>barefoot-example-cloud-azure</module>
@@ -58,6 +62,7 @@
         <module>barefoot-example-jdbc-aws</module>
         <module>barefoot-example-jdbc-war</module>
         <module>barefoot-example-jdbc</module>
+        <module>barefoot-example-jersey-app</module>
         <module>barefoot-example-jersey-aws</module>
         <module>barefoot-example-jersey-azure</module>
         <module>barefoot-example-jersey-google</module>
@@ -181,6 +186,11 @@
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
+                <artifactId>net-sf-barefoot-example-boot</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-example-jakws</artifactId>
                 <version>1.0.1-SNAPSHOT</version>
             </dependency>
@@ -202,7 +212,7 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-context-xml-aws</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
@@ -302,7 +312,7 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-google-functions</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
@@ -327,7 +337,7 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-context-xml-google</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.google.cloud.functions</groupId>
@@ -342,12 +352,12 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-azure-functions</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-context-xml-azure</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
@@ -378,7 +388,7 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-testtool</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
@@ -393,7 +403,7 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-aws-lambda</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.xml.bind</groupId>

@@ -66,7 +66,7 @@ public class MyNonRootRequestTest extends TestBase {
           + "\r\n"
           + "SOME=THING&ANYTHING=ELSE";
   static final String ANSWER_ONE =
-      "{\"method\":\"POST\",\"contentType\":\"text/plain;"
+      "{\"dispatcherType\":\"REQUEST\",\"method\":\"POST\",\"contentType\":\"text/plain;"
           + " charset=UTF-8\",\"authType\":null,\"content\":\"SOME=THING&ANYTHING=ELSE\",\"servletPath\":\"\",\"serverName\":\"127.0.0.1\",\"contextPath\":\"/test\",\"contentLength\":24,\"status\":200,\"serverPort\":8080,\"contentLengthLong\":24,\"header\":{\"content-length\":\"24\",\"cookie\":\"SESSION=ABCD-1234;"
           + " WIBBLE=42\",\"host\":\"127.0.0.1:8080\",\"content-type\":\"text/plain;"
           + " charset=UTF-8\",\"user-agent\":\"curl/7.64.0\",\"accept\":\"*/*\"},\"headers\":{\"content-length\":[\"24\"],\"cookie\":[\"SESSION=ABCD-1234;"
@@ -86,7 +86,7 @@ public class MyNonRootRequestTest extends TestBase {
           + "\r\n"
           + "SOME=THING&ANYTHING=ELSE";
   static final String ANSWER_TWO =
-      "{\"method\":\"POST\",\"contentType\":\"application/x-www-form-urlencoded\",\"authType\":null,\"content\":\"\",\"servletPath\":\"\",\"serverName\":\"127.0.0.1\",\"contextPath\":\"/test\",\"contentLength\":24,\"status\":200,\"serverPort\":8080,\"contentLengthLong\":24,\"header\":{\"content-length\":\"24\",\"cookie\":\"SESSION=ABCD-1234;"
+      "{\"dispatcherType\":\"REQUEST\",\"method\":\"POST\",\"contentType\":\"application/x-www-form-urlencoded\",\"authType\":null,\"content\":\"\",\"servletPath\":\"\",\"serverName\":\"127.0.0.1\",\"contextPath\":\"/test\",\"contentLength\":24,\"status\":200,\"serverPort\":8080,\"contentLengthLong\":24,\"header\":{\"content-length\":\"24\",\"cookie\":\"SESSION=ABCD-1234;"
           + " WIBBLE=42\",\"host\":\"127.0.0.1:8080\",\"content-type\":\"application/x-www-form-urlencoded\",\"user-agent\":\"curl/7.64.0\",\"accept\":\"*/*\"},\"headers\":{\"content-length\":[\"24\"],\"cookie\":[\"SESSION=ABCD-1234;"
           + " WIBBLE=42\"],\"host\":[\"127.0.0.1:8080\"],\"content-type\":[\"application/x-www-form-urlencoded\"],\"user-agent\":[\"curl/7.64.0\"],\"accept\":[\"*/*\",\"text/plain\",\"application/java\"]},\"characterEncoding\":null,\"parameterMap\":{\"ANYTHING\":[\"ELSE\"],\"SOME\":[\"THING\"],\"wibble\":[\"flim\",\"egg\"]},\"pathInfo\":\"/submit/debug\",\"pathTranslated\":null,\"requestURI\":\"/test/submit/debug\",\"requestURL\":\"http://127.0.0.1:8080/test/submit/debug\",\"queryString\":\"wibble=flim&wibble=egg\"}";
 

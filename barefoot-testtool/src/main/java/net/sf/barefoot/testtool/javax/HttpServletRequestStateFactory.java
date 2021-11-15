@@ -27,6 +27,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import javax.servlet.DispatcherType;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -55,6 +56,11 @@ public class HttpServletRequestStateFactory {
     state.serverPort = request.getServerPort();
     state.serverName = request.getServerName();
     state.contextPath = request.getContextPath();
+
+    DispatcherType dispatcherType = request.getDispatcherType();
+    if (dispatcherType != null) {
+      state.dispatcherType = dispatcherType.name();
+    }
 
     StringBuffer url = request.getRequestURL();
     if (url != null) {

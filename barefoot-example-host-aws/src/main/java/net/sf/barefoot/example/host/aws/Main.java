@@ -21,24 +21,18 @@
 
 package net.sf.barefoot.example.host.aws;
 
-import com.amazonaws.services.lambda.runtime.ClientContext;
-import com.amazonaws.services.lambda.runtime.CognitoIdentity;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.barefoot.aws.concrete.ConcreteContext;
 
 public class Main {
   final InputStream is;
@@ -70,7 +64,17 @@ public class Main {
     boolean responded = false;
 
     try {
-      Context context = new HostContext();
+      Context context =
+          ConcreteContext.builder()
+              .awsRequestId("test")
+              .functionName("test")
+              .functionVersion("test")
+              .invokedFunctionArn("test")
+              .logGroupName("test")
+              .logStreamName("test")
+              .memoryLimitInMB(100000)
+              .remainingTimeInMillis(1000000)
+              .build();
 
       if (target instanceof RequestStreamHandler) {
         RequestStreamHandler handler = (RequestStreamHandler) target;
@@ -140,78 +144,6 @@ public class Main {
     }
 
     return responded;
-  }
-
-  class HostLogger implements LambdaLogger {
-    final Logger logger = Logger.getGlobal();
-
-    @Override
-    public void log(String msg) {
-      logger.info(msg);
-    }
-
-    @Override
-    public void log(byte[] msg) {
-      logger.info(new String(msg));
-    }
-  }
-
-  class HostContext implements Context {
-
-    @Override
-    public String getAwsRequestId() {
-      return "test";
-    }
-
-    @Override
-    public String getLogGroupName() {
-      return "test";
-    }
-
-    @Override
-    public String getLogStreamName() {
-      return "test";
-    }
-
-    @Override
-    public String getFunctionName() {
-      return "test";
-    }
-
-    @Override
-    public String getFunctionVersion() {
-      return "1.0";
-    }
-
-    @Override
-    public String getInvokedFunctionArn() {
-      return "test";
-    }
-
-    @Override
-    public CognitoIdentity getIdentity() {
-      return null;
-    }
-
-    @Override
-    public ClientContext getClientContext() {
-      return null;
-    }
-
-    @Override
-    public int getRemainingTimeInMillis() {
-      return 1000000000;
-    }
-
-    @Override
-    public int getMemoryLimitInMB() {
-      return 10000000;
-    }
-
-    @Override
-    public LambdaLogger getLogger() {
-      return new HostLogger();
-    }
   }
 
   static void runServer(Object target, int port) throws IOException {

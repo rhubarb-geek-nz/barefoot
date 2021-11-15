@@ -21,6 +21,7 @@
 
 package net.sf.barefoot.testtool.jakarta;
 
+import jakarta.servlet.DispatcherType;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -55,6 +56,11 @@ public class HttpServletRequestStateFactory {
     state.serverPort = request.getServerPort();
     state.serverName = request.getServerName();
     state.contextPath = request.getContextPath();
+
+    DispatcherType dispatcherType = request.getDispatcherType();
+    if (dispatcherType != null) {
+      state.dispatcherType = dispatcherType.name();
+    }
 
     StringBuffer url = request.getRequestURL();
     if (url != null) {

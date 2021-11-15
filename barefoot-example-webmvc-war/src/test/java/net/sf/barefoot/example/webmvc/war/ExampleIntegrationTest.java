@@ -25,6 +25,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 /** Integration test */
@@ -43,8 +44,43 @@ public class ExampleIntegrationTest {
     ResponseEntity<Map> response =
         restTemplate.getForEntity(httpUrl + "/api/HttpExample", Map.class);
 
-    Assert.assertTrue("status", response.getStatusCodeValue() == 200);
+    Assert.assertEquals("status", 200, response.getStatusCodeValue());
+    Assert.assertEquals("method", "GET", response.getBody().get("method"));
+  }
 
-    Assert.assertTrue("method", "GET".equals(response.getBody().get("method")));
+  @Test
+  public void httpGet404() {
+    String port = System.getProperty("barefoot.http.port");
+    Assert.assertTrue(Integer.parseInt(port) > 0);
+    String httpUrl = System.getProperty("barefoot.http.url");
+    Assert.assertTrue(httpUrl.contains("://"));
+    boolean caught = false;
+
+    try {
+      ResponseEntity<Map> response =
+          restTemplate.getForEntity(httpUrl + "/api/DoesNotExist", Map.class);
+    } catch (HttpClientErrorException.NotFound ex) {
+      caught = true;
+    }
+
+    Assert.assertTrue("caught", caught);
+  }
+
+  @Test
+  public void httpGet405() {
+    String port = System.getProperty("barefoot.http.port");
+    Assert.assertTrue(Integer.parseInt(port) > 0);
+    String httpUrl = System.getProperty("barefoot.http.url");
+    Assert.assertTrue(httpUrl.contains("://"));
+    boolean caught = false;
+
+    try {
+      ResponseEntity<Map> response =
+          restTemplate.getForEntity(httpUrl + "/api/HttpExample2", Map.class);
+    } catch (HttpClientErrorException.MethodNotAllowed ex) {
+      caught = true;
+    }
+
+    Assert.assertTrue("caught", caught);
   }
 }

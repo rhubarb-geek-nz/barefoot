@@ -51,4 +51,18 @@ class BarefootExampleBootWarApplicationApplicationTests {
   void GET_forbidden() throws Exception {
     mvc.perform(MockMvcRequestBuilders.get("/")).andDo(print()).andExpect(status().isForbidden());
   }
+
+  @Test
+  void GET_unknown() throws Exception {
+    mvc.perform(MockMvcRequestBuilders.get("/api/Unknown"))
+        .andDo(print())
+        .andExpect(status().isNotFound());
+  }
+
+  @Test
+  void GET_method() throws Exception {
+    mvc.perform(MockMvcRequestBuilders.get("/api/HttpExample2"))
+        .andDo(print())
+        .andExpect(status().isMethodNotAllowed());
+  }
 }

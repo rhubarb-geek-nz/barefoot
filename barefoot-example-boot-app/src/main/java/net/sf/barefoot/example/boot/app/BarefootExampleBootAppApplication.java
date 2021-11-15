@@ -21,13 +21,12 @@
 
 package net.sf.barefoot.example.boot.app;
 
+import net.sf.barefoot.example.boot.BarefootExampleBootApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
 public class BarefootExampleBootAppApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(BarefootExampleBootAppApplication.class, args);
+    SpringApplication.run(BarefootExampleBootApplication.class, args);
   }
 }

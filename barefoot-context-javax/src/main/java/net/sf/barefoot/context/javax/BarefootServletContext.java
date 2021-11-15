@@ -112,7 +112,24 @@ public final class BarefootServletContext extends AbstractServletContext impleme
 
   @Override
   public RequestDispatcher getRequestDispatcher(String string) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    BarefootServletRegistration dispatcher = servletPaths.get(string);
+    if (dispatcher == null) {
+      if (!string.isEmpty()) {
+        for (Map.Entry<String, BarefootServletRegistration> entry : servletPaths.entrySet()) {
+          String key = entry.getKey();
+          if (key != null && !key.isEmpty()) {
+            if (string.startsWith(key)) {
+              dispatcher = entry.getValue();
+              break;
+            }
+          }
+        }
+      }
+      if (dispatcher == null) {
+        dispatcher = servletPaths.get(null);
+      }
+    }
+    return new BarefootRequestDispatcher(this, dispatcher, string);
   }
 
   @Override

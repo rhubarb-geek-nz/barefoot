@@ -62,4 +62,44 @@ public class FunctionTest {
     Assertions.assertEquals(HttpStatus.OK, ret.getStatus());
     Assertions.assertNotNull(ret.getBody());
   }
+
+  @Test
+  public void testMethodNotAllowed() throws Exception {
+    URI uri = new URI("/api/HttpExample2");
+    HttpMethod method = HttpMethod.GET;
+
+    final Map<String, String> queryParams = new HashMap<>();
+    queryParams.put("name", "Azure");
+
+    final Optional<String> queryBody = Optional.empty();
+    final HttpRequestMessage<Optional<String>> req =
+        ConcreteHttpRequestMessage.builder(queryBody)
+            .uri(uri)
+            .method(method)
+            .queryParameters(queryParams)
+            .build();
+    final ExecutionContext context = new ConcreteExecutionContext();
+    final HttpResponseMessage ret = new Function().run(req, context);
+    Assertions.assertEquals(HttpStatus.METHOD_NOT_ALLOWED, ret.getStatus());
+  }
+
+  @Test
+  public void testUrlNotFound() throws Exception {
+    URI uri = new URI("/api/NoSuchURL");
+    HttpMethod method = HttpMethod.GET;
+
+    final Map<String, String> queryParams = new HashMap<>();
+    queryParams.put("name", "Azure");
+
+    final Optional<String> queryBody = Optional.empty();
+    final HttpRequestMessage<Optional<String>> req =
+        ConcreteHttpRequestMessage.builder(queryBody)
+            .uri(uri)
+            .method(method)
+            .queryParameters(queryParams)
+            .build();
+    final ExecutionContext context = new ConcreteExecutionContext();
+    final HttpResponseMessage ret = new Function().run(req, context);
+    Assertions.assertEquals(HttpStatus.NOT_FOUND, ret.getStatus());
+  }
 }

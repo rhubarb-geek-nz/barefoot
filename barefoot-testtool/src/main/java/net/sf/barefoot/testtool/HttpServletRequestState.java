@@ -44,7 +44,8 @@ public class HttpServletRequestState<T> {
       servletPath,
       url,
       serverName,
-      contextPath;
+      contextPath,
+      dispatcherType;
   final int contentLength, status, serverPort;
   final long contentLengthLong;
   final Map<String, String> header;
@@ -132,6 +133,10 @@ public class HttpServletRequestState<T> {
     return serverPort;
   }
 
+  public String getDispatcherType() {
+    return dispatcherType;
+  }
+
   public static class Builder<T> {
     public String method,
         uri,
@@ -145,7 +150,8 @@ public class HttpServletRequestState<T> {
         content,
         servletPath,
         serverName,
-        contextPath;
+        contextPath,
+        dispatcherType;
     public int contentLength, status, serverPort;
     public long contentLengthLong;
     public Map<String, String> header = new HashMap<>();
@@ -180,5 +186,6 @@ public class HttpServletRequestState<T> {
     serverName = obj.serverName;
     serverPort = obj.serverPort;
     contextPath = obj.contextPath;
+    dispatcherType = obj.dispatcherType;
   }
 }

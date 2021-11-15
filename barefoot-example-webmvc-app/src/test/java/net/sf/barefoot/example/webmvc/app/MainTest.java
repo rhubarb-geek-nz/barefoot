@@ -23,6 +23,7 @@ package net.sf.barefoot.example.webmvc.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 import org.junit.Assert;
@@ -43,6 +44,36 @@ public class MainTest {
         map = objectMapper.readValue(is, Map.class);
       }
       Assert.assertEquals("GET", map.get("method"));
+    } finally {
+      main.stop();
+    }
+  }
+
+  @Test
+  public void test404() throws Exception {
+    Main main = new Main();
+    try {
+      main.start();
+      URL url = new URL("http://localhost:" + port + "/api/NoSuch");
+      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+      connection.connect();
+      Assert.assertEquals("status", 404, connection.getResponseCode());
+      connection.disconnect();
+    } finally {
+      main.stop();
+    }
+  }
+
+  @Test
+  public void test405() throws Exception {
+    Main main = new Main();
+    try {
+      main.start();
+      URL url = new URL("http://localhost:" + port + "/api/HttpExample2");
+      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+      connection.connect();
+      Assert.assertEquals("status", 405, connection.getResponseCode());
+      connection.disconnect();
     } finally {
       main.stop();
     }

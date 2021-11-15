@@ -180,7 +180,7 @@ public final class BarefootServletRequest extends AbstractServletRequest
 
   @Override
   public RequestDispatcher getRequestDispatcher(String string) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return servletContext.getRequestDispatcher(string);
   }
 
   @Override
