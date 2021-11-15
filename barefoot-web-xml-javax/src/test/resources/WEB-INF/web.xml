@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>database</param-name>
+        <param-value>java:comp/env/jdbc/testdb</param-value>
+    </context-param>
+    <listener>
+        <description>Listener to install bean</description>
+        <listener-class>net.sf.barefoot.web.xml.javax.TestListener</listener-class>
+    </listener>
+    <servlet>
+        <description>Maps a WSDL call to a service bean</description>
+        <servlet-name>BarefootExampleWebService</servlet-name>
+        <servlet-class>net.sf.barefoot.web.xml.javax.TestServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>net.sf.barefoot.example.jaxrs.</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BarefootExampleWebService</servlet-name>
+        <url-pattern>/services/ExampleService</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>name</filter-name>
+        <filter-class>net.sf.barefoot.web.xml.javax.TestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>name</filter-name>
+        <url-pattern>url</url-pattern>
+    </filter-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <path>cookie-path</path>
+            <comment>cookie-comment</comment>
+            <domain>cookie-domain</domain>
+            <http-only>true</http-only>
+            <max-age>300</max-age>
+            <name>cookie-name</name>
+            <secure>true</secure>
+        </cookie-config>
+    </session-config>
+</web-app>
