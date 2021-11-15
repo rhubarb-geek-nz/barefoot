@@ -37,7 +37,7 @@
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-context-jakarta</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -79,7 +79,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <argLine>-Djava.naming.factory.initial=net.sf.barefoot.naming.BarefootInitialContextFactory -Dspring.datasource.driver-class-name=org.h2.Driver -Dspring.datasource.url=jdbc:h2:mem:testdb;USER=sa</argLine>
+                    <systemPropertyVariables>
+                        <java.naming.factory.initial>net.sf.barefoot.naming.BarefootInitialContextFactory</java.naming.factory.initial>
+                        <spring.datasource.driver-class-name>org.h2.Driver</spring.datasource.driver-class-name>
+                        <spring.datasource.url>jdbc:h2:mem:testdb;USER=sa</spring.datasource.url>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sf.barefoot</groupId>
     <artifactId>net-sf-barefoot-example-jdbc</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>net.sf.barefoot</groupId>
         <artifactId>barefoot-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +20,6 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
-            <version>2.4.2</version>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
@@ -29,10 +28,12 @@
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-context-javax</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-context-xml</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
@@ -46,7 +47,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -55,17 +55,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -75,12 +72,10 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>5.4.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>5.4.5</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -132,7 +127,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <argLine>-Djava.naming.factory.initial=net.sf.barefoot.naming.BarefootInitialContextFactory -Dspring.datasource.driver-class-name=org.h2.Driver -Dspring.datasource.url=jdbc:h2:mem:testdb;USER=sa</argLine>
+                    <systemPropertyVariables>
+                        <java.naming.factory.initial>net.sf.barefoot.naming.BarefootInitialContextFactory</java.naming.factory.initial>
+                        <spring.datasource.driver-class-name>org.h2.Driver</spring.datasource.driver-class-name>
+                        <spring.datasource.url>jdbc:h2:mem:testdb;USER=sa</spring.datasource.url>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sf.barefoot</groupId>
     <artifactId>barefoot-example-metro-aws</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>barefoot-example-metro-aws</name>
     <parent>
         <groupId>net.sf.barefoot</groupId>
         <artifactId>barefoot-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,10 +20,12 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-log4j2</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
@@ -141,6 +143,21 @@
                 <version>2.5.2</version>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.sf.barefoot</groupId>
+                <artifactId>barefoot-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extension>.zip</extension>
                 </configuration>
             </plugin>
         </plugins>

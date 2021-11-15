@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sf.barefoot</groupId>
     <artifactId>net-sf-barefoot-example-webmvc</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>net.sf.barefoot</groupId>
         <artifactId>barefoot-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <properties>
         <barefoot.install.skip>true</barefoot.install.skip>

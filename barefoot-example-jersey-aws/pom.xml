@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sf.barefoot</groupId>
     <artifactId>barefoot-example-jersey-aws</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>barefoot-example-jersey-aws</name>
     <parent>
         <groupId>net.sf.barefoot</groupId>
         <artifactId>barefoot-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -61,12 +61,12 @@
             <artifactId>jersey-media-moxy</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
         </dependency>
         <!-- Test -->
         <dependency>
@@ -138,6 +138,21 @@
                 <version>2.5.2</version>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.sf.barefoot</groupId>
+                <artifactId>barefoot-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extension>.zip</extension>
                 </configuration>
             </plugin>
         </plugins>
