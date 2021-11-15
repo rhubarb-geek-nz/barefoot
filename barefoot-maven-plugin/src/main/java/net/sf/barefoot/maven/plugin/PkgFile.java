@@ -130,7 +130,7 @@ class PkgFile {
           PkgFile child = new PkgFile(mojo, name, this, classMap);
           success &= child.process(zis);
         } else {
-          processName(name);
+          success &= processName(name);
         }
       }
     }
@@ -158,23 +158,24 @@ class PkgFile {
       for (Path item : list) {
         if (Files.isRegularFile(item)) {
           String fileName = item.toString();
+          if (fileName.startsWith(basePath)) {
+            fileName = fileName.substring(basePath.length());
+          }
+
+          if (fileName.startsWith(File.separator)) {
+            fileName = fileName.substring(File.separator.length());
+          }
+
+          if (!"/".equals(File.separator)) {
+            fileName = fileName.replace(File.separatorChar, '/');
+          }
+
           if (isZip(fileName)) {
             try (InputStream fis = new FileInputStream(item.toFile())) {
-              success &= process(fis);
+              PkgFile pkg = new PkgFile(mojo, fileName, this, classMap);
+              success &= pkg.process(fis);
             }
           } else {
-            if (fileName.startsWith(basePath)) {
-              fileName = fileName.substring(basePath.length());
-            }
-
-            if (fileName.startsWith(File.separator)) {
-              fileName = fileName.substring(File.separator.length());
-            }
-
-            if (!"/".equals(File.separator)) {
-              fileName = fileName.replace(File.separatorChar, '/');
-            }
-
             success &= processName(fileName);
           }
         }

@@ -37,11 +37,13 @@ import java.util.Optional;
 public class ConcreteHttpResponse implements HttpResponse {
   Optional<String> contentType;
   final OutputStream outputStream;
+  final BufferedWriter writer;
   int statusCode;
   final Map<String, List<String>> headers = new HashMap<>();
 
   private ConcreteHttpResponse(Builder builder) {
     outputStream = builder.outputStream;
+    writer = builder.writer;
   }
 
   @Override
@@ -90,14 +92,22 @@ public class ConcreteHttpResponse implements HttpResponse {
 
   @Override
   public BufferedWriter getWriter() throws IOException {
-    return new BufferedWriter(new OutputStreamWriter(getOutputStream(), StandardCharsets.UTF_8));
+    return writer == null
+        ? new BufferedWriter(new OutputStreamWriter(getOutputStream(), StandardCharsets.UTF_8))
+        : writer;
   }
 
   public static class Builder {
     OutputStream outputStream;
+    BufferedWriter writer;
 
     public Builder setOutputStream(OutputStream os) {
       outputStream = os;
+      return this;
+    }
+
+    public Builder setWriter(BufferedWriter wr) {
+      writer = wr;
       return this;
     }
 

@@ -24,6 +24,9 @@
                 <configuration>
                     <source>11</source>
                     <detectJavaApiLink>false</detectJavaApiLink>
+                    <sourceFileExcludes>
+                        <exclude>module-info.java</exclude>
+                    </sourceFileExcludes>
                 </configuration>
             </plugin>
         </plugins>

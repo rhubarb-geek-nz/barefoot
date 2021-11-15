@@ -1,0 +1,62 @@
+{
+  "resource": "/api/HttpExample",
+  "path": "/api/HttpExample",
+  "httpMethod": "GET",
+  "headers": {
+    "Header1": "value1",
+    "Header2": "value2"
+  },
+  "multiValueHeaders": {
+    "Header1": [
+      "value1"
+    ],
+    "Header2": [
+      "value1",
+      "value2"
+    ]
+  },
+  "queryStringParameters": {
+    "parameter1": "value1",
+    "parameter2": "value"
+  },
+  "multiValueQueryStringParameters": {
+    "parameter1": [
+      "value1",
+      "value2"
+    ],
+    "parameter2": [
+      "value"
+    ]
+  },
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "id",
+    "authorizer": {
+      "claims": null,
+      "scopes": null
+    },
+    "httpMethod": "GET",
+    "identity": {
+      "accessKey": null,
+      "accountId": null,
+      "caller": null,
+      "cognitoAuthenticationProvider": null,
+      "cognitoAuthenticationType": null,
+      "cognitoIdentityId": null,
+      "cognitoIdentityPoolId": null,
+      "sourceIp": "IP",
+      "user": null,
+      "userAgent": "user-agent",
+      "userArn": null
+    },
+    "path": "/test/api/HttpExample",
+    "requestId": "id=",
+    "resourceId": null,
+    "resourcePath": "/api/HttpExample",
+    "stage": "$default"
+  },
+  "pathParameters": null,
+  "stageVariables": null,
+  "body": "Hello from Lambda!",
+  "isBase64Encoded": false
+}

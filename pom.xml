@@ -14,70 +14,77 @@
         <barefoot.install.skip>true</barefoot.install.skip>
     </properties>
     <modules>
-        <module>barefoot-maven-plugin</module>
-        <module>barefoot-util</module>
-        <module>barefoot-testtool</module>
-        <module>barefoot-naming</module>
-        <module>barefoot-context</module>
-        <module>barefoot-context-javax</module>
-        <module>barefoot-context-jakarta</module>
-        <module>barefoot-context-xml</module>
-        <module>barefoot-web-xml-javax</module>
-        <module>barefoot-web-xml-jakarta</module>
-        <module>barefoot-annotation-javax</module>
         <module>barefoot-annotation-jakarta</module>
+        <module>barefoot-annotation-javax</module>
         <module>barefoot-aws-concrete</module>
         <module>barefoot-aws-lambda</module>
         <module>barefoot-azure-concrete</module>
         <module>barefoot-azure-functions</module>
-        <module>barefoot-google-concrete</module>
-        <module>barefoot-google-functions</module>
+        <module>barefoot-context</module>
+        <module>barefoot-context-jakarta</module>
+        <module>barefoot-context-javax</module>
+        <module>barefoot-context-xml</module>
         <module>barefoot-context-xml-aws</module>
-        <module>barefoot-context-xml-google</module>
         <module>barefoot-context-xml-azure</module>
+        <module>barefoot-context-xml-google</module>
         <module>barefoot-example-bean</module>
-        <module>barefoot-example-rest</module>
-        <module>barefoot-example-webmvc</module>
-        <module>barefoot-example-jaxrs</module>
-        <module>barefoot-example-wsdl</module>
-        <module>barefoot-example-metro</module>
-        <module>barefoot-example-service</module>
-        <module>barefoot-example-jaxws</module>
-        <module>barefoot-example-jakws</module>
+        <module>barefoot-example-boot-app</module>
+        <module>barefoot-example-boot-war</module>
+        <module>barefoot-example-cloud-aws</module>
+        <module>barefoot-example-cloud-azure</module>
+        <module>barefoot-example-cloud-google</module>
+        <module>barefoot-example-cxf-app</module>
         <module>barefoot-example-cxf-aws</module>
         <module>barefoot-example-cxf-azure</module>
         <module>barefoot-example-cxf-google</module>
         <module>barefoot-example-cxf-war</module>
-        <module>barefoot-example-javax</module>
-        <module>barefoot-example-javax-aws</module>
-        <module>barefoot-example-javax-azure</module>
-        <module>barefoot-example-javax-google</module>
-        <module>barefoot-example-javax-war</module>
-        <module>barefoot-example-javax-app</module>
+        <module>barefoot-example-host-aws</module>
         <module>barefoot-example-jakarta</module>
+        <module>barefoot-example-jakarta-app</module>
         <module>barefoot-example-jakarta-aws</module>
         <module>barefoot-example-jakarta-azure</module>
         <module>barefoot-example-jakarta-google</module>
         <module>barefoot-example-jakarta-war</module>
-        <module>barefoot-example-jdbc</module>
+        <module>barefoot-example-jakws</module>
+        <module>barefoot-example-javax</module>
+        <module>barefoot-example-javax-app</module>
+        <module>barefoot-example-javax-aws</module>
+        <module>barefoot-example-javax-azure</module>
+        <module>barefoot-example-javax-google</module>
+        <module>barefoot-example-javax-war</module>
+        <module>barefoot-example-jaxrs</module>
+        <module>barefoot-example-jaxws</module>
+        <module>barefoot-example-jdbc-app</module>
         <module>barefoot-example-jdbc-aws</module>
+        <module>barefoot-example-jdbc-war</module>
+        <module>barefoot-example-jdbc</module>
         <module>barefoot-example-jersey-aws</module>
         <module>barefoot-example-jersey-azure</module>
         <module>barefoot-example-jersey-google</module>
         <module>barefoot-example-jersey-war</module>
+        <module>barefoot-example-metro</module>
+        <module>barefoot-example-metro-app</module>
         <module>barefoot-example-metro-aws</module>
         <module>barefoot-example-metro-azure</module>
         <module>barefoot-example-metro-google</module>
         <module>barefoot-example-metro-war</module>
+        <module>barefoot-example-rest</module>
+        <module>barefoot-example-service</module>
+        <module>barefoot-example-webmvc</module>
+        <module>barefoot-example-webmvc-app</module>
         <module>barefoot-example-webmvc-aws</module>
         <module>barefoot-example-webmvc-azure</module>
         <module>barefoot-example-webmvc-google</module>
         <module>barefoot-example-webmvc-war</module>
-        <module>barefoot-example-jdbc-war</module>
-        <module>barefoot-example-boot-app</module>
-        <module>barefoot-example-cxf-app</module>
-        <module>barefoot-example-jdbc-app</module>
-        <module>barefoot-example-boot-war</module>
+        <module>barefoot-example-wsdl</module>
+        <module>barefoot-google-concrete</module>
+        <module>barefoot-google-functions</module>
+        <module>barefoot-maven-plugin</module>
+        <module>barefoot-naming</module>
+        <module>barefoot-testtool</module>
+        <module>barefoot-util</module>
+        <module>barefoot-web-xml-jakarta</module>
+        <module>barefoot-web-xml-javax</module>
     </modules>
     <licenses>
         <license>
@@ -300,7 +307,7 @@
             <dependency>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>net-sf-barefoot-google-concrete</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.barefoot</groupId>

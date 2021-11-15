@@ -1,12 +1,19 @@
 {
     "$schema": "http://json.schemastore.org/proxies",
     "proxies": {
-        "api": {
+        "apiHttpExample": {
             "matchCondition": {
                 "route": "/api/HttpExample",
                 "methods" : [ "GET", "POST" ]
             },
             "backendUri": "http://%COMPUTERNAME%:7075/api/HttpExample"
+        },
+        "apiExampleFunction": {
+            "matchCondition": {
+                "route": "/api/ExampleFunction",
+                "methods" : [ "GET", "POST" ]
+            },
+            "backendUri": "http://%COMPUTERNAME%:7076/api/ExampleFunction"
         },
         "services": {
             "matchCondition": {

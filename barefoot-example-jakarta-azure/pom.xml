@@ -146,10 +146,9 @@
                             <outputDirectory>${stagingDirectory}</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}</directory>
+                                    <directory>${project.basedir}/src/main/azure</directory>
                                     <includes>
-                                        <include>host.json</include>
-                                        <include>local.settings.json</include>
+                                        <include>**</include>
                                     </includes>
                                 </resource>
                             </resources>
