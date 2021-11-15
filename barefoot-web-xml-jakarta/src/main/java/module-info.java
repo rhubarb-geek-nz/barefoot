@@ -21,7 +21,7 @@
 
 module net.sf.barefoot.web.xml.jakarta {
   requires net.sf.barefoot.util;
-  requires java.servlet;
+  requires jakarta.servlet;
   requires java.xml;
   requires java.naming;
 

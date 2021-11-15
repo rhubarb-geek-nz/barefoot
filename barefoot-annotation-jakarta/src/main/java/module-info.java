@@ -20,7 +20,7 @@
  */
 
 module net.sf.barefoot.annotation.jakarta {
-  requires java.servlet;
+  requires jakarta.servlet;
 
   opens net.sf.barefoot.annotation.jakarta;
 }

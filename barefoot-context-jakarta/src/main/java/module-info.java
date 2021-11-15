@@ -22,7 +22,7 @@
 module net.sf.barefoot.context.jakarta {
   requires net.sf.barefoot.context;
   requires net.sf.barefoot.util;
-  requires java.servlet;
+  requires jakarta.servlet;
   requires java.naming;
 
   exports net.sf.barefoot.context.jakarta;

@@ -20,7 +20,7 @@
  */
 
 module net.sf.barefoot.example.jakarta {
-  requires java.servlet;
+  requires jakarta.servlet;
   requires net.sf.barefoot.testtool;
   requires com.fasterxml.jackson.databind;
   requires com.fasterxml.jackson.annotation;

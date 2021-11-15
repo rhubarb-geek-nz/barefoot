@@ -6,7 +6,7 @@
     </listener>
     <listener>
         <description>Listener to install bean</description>
-        <listener-class>net.sf.barefoot.example.jaxws.BarefootServletContextListener</listener-class>
+        <listener-class>net.sf.barefoot.example.jakws.BarefootServletContextListener</listener-class>
     </listener>
     <servlet>
         <description>Maps a WSDL call to a service bean</description>

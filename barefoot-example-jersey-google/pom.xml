@@ -5,6 +5,11 @@
     <artifactId>barefoot-example-jersey-google</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <parent>
+        <groupId>net.sf.barefoot</groupId>
+        <artifactId>barefoot-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -14,75 +19,61 @@
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-google-concrete</artifactId>
-            <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-google-functions</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-web-xml-javax</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-context-javax</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-context-xml-google</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-example-bean</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.sf.barefoot</groupId>
             <artifactId>net-sf-barefoot-example-jaxrs</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
-            <version>2.32</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
-            <version>2.32</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
-            <version>2.32</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.cloud.functions</groupId>
             <artifactId>functions-framework-api</artifactId>
-            <version>1.0.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
