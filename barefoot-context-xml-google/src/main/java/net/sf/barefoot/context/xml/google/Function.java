@@ -57,7 +57,6 @@ public class Function implements HttpFunction {
               context, loader, BarefootContextXmlLoader.META_INF_CONTEXT_XML);
           AbstractServletContext servletContext =
               (AbstractServletContext) context.lookup("barefoot/context");
-          servletContext.onStartup();
           instance = new BarefootGoogleFunction(servletContext);
         } finally {
           thread.setContextClassLoader(original);

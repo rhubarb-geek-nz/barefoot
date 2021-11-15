@@ -34,12 +34,12 @@ public final class BarefootServletContextFactory implements ObjectFactory {
 
   @Override
   public BarefootServletContext getObjectInstance(
-      Object arg0, Name arg1, Context arg2, Hashtable<?, ?> arg3) throws Exception {
+      Object obj, Name name, Context nameCtx, Hashtable<?, ?> environment) throws Exception {
     String path = "";
     ClassLoader loader = getClass().getClassLoader();
 
-    if (arg0 != null) {
-      Reference ref = (Reference) arg0;
+    if (obj != null) {
+      Reference ref = (Reference) obj;
 
       Enumeration<RefAddr> all = ref.getAll();
 
@@ -54,6 +54,8 @@ public final class BarefootServletContextFactory implements ObjectFactory {
       }
     }
 
-    return new BarefootServletContext(path, loader);
+    BarefootServletContext context = new BarefootServletContext(path, loader);
+    context.onStartup();
+    return context;
   }
 }

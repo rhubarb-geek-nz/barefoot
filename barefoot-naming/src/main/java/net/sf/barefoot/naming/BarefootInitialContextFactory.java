@@ -32,6 +32,7 @@ import javax.naming.spi.InitialContextFactory;
  */
 public class BarefootInitialContextFactory implements InitialContextFactory {
   private static Context context;
+  private static Object mutex = new Object();
   final ClassLoader classLoader;
 
   public BarefootInitialContextFactory() {
@@ -43,12 +44,15 @@ public class BarefootInitialContextFactory implements InitialContextFactory {
   }
 
   @Override
-  public synchronized Context getInitialContext(Hashtable<?, ?> arg0) throws NamingException {
-    if (context == null) {
-      context = new BarefootContext(classLoader, arg0);
-      Context comp = context.createSubcontext("java:comp");
-      comp.createSubcontext("env");
+  public Context getInitialContext(Hashtable<?, ?> environment) throws NamingException {
+    synchronized (mutex) {
+      if (context == null) {
+        Context rootContext = new BarefootContext(classLoader, environment);
+        Context javaComp = rootContext.createSubcontext("java:comp");
+        javaComp.createSubcontext("env");
+        context = rootContext;
+      }
+      return context;
     }
-    return context;
   }
 }

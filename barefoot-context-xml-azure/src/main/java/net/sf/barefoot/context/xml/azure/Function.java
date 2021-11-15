@@ -56,7 +56,6 @@ public class Function
               context, loader, BarefootContextXmlLoader.META_INF_CONTEXT_XML);
           AbstractServletContext servletContext =
               (AbstractServletContext) context.lookup("barefoot/context");
-          servletContext.onStartup();
           instance = new BarefootAzureFunction(servletContext);
         } finally {
           thread.setContextClassLoader(original);

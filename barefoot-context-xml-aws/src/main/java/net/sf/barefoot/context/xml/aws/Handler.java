@@ -55,7 +55,6 @@ public class Handler implements RequestHandler<Map<String, Object>, Map<String, 
               context, localClassLoader, BarefootContextXmlLoader.META_INF_CONTEXT_XML);
           AbstractServletContext servletContext =
               (AbstractServletContext) context.lookup("barefoot/context");
-          servletContext.onStartup();
           instance = new BarefootAwsHandler(servletContext);
         } finally {
           thread.setContextClassLoader(originalClassLoader);
