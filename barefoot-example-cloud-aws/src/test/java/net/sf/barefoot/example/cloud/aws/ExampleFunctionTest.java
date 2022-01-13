@@ -56,7 +56,7 @@ public class ExampleFunctionTest {
         mapper.readValue(new ByteArrayInputStream(outBytes), typeMapStringObject);
     Assert.assertNotNull("response", response);
     Assert.assertEquals("statusCode", Integer.valueOf(200), (Integer) response.get("statusCode"));
-    Assert.assertEquals("\"Example Bean\"", response.get("body"));
+    Assert.assertEquals("Example Bean", response.get("body"));
     Assert.assertFalse("isBase64Encoded", (Boolean) response.get("isBase64Encoded"));
   }
 
@@ -78,7 +78,7 @@ public class ExampleFunctionTest {
 
     Assert.assertNotNull("response", response);
     Assert.assertEquals("statusCode", Integer.valueOf(200), (Integer) response.get("statusCode"));
-    Assert.assertEquals("\"Example Bean\"", response.get("body"));
+    Assert.assertEquals("Example Bean", response.get("body"));
     Assert.assertFalse("isBase64Encoded", (Boolean) response.get("isBase64Encoded"));
   }
 }

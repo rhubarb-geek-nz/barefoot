@@ -25,10 +25,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -59,6 +56,7 @@ class PkgFile {
         {
           add("module-info.class");
           add("META-INF/versions/9/module-info.class");
+          add("META-INF/versions/11/module-info.class");
         }
       };
 
@@ -130,7 +128,22 @@ class PkgFile {
           PkgFile child = new PkgFile(mojo, name, this, classMap);
           success &= child.process(zis);
         } else {
-          success &= processName(name);
+          if (name.endsWith("/pom.properties")) {
+            Properties props = new Properties();
+            props.load(zis);
+            String groupId = props.getProperty("groupId");
+            String artefactId = props.getProperty("artifactId");
+            String version = props.getProperty("version");
+            if ("org.apache.logging.log4j".equals(groupId) && "log4j-core".equals(artefactId)) {
+              String vers[] = version.split("\\.");
+              if (2 == Integer.parseInt(vers[0]) && Integer.parseInt(vers[1]) < 17) {
+                System.err.println("FOUND " + groupId + ":" + artefactId + ":" + version);
+                success = false;
+              }
+            }
+          } else {
+            success &= processName(name);
+          }
         }
       }
     }
