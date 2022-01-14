@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.sf.barefoot</groupId>
     <artifactId>barefoot-example-cxf-google</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>net.sf.barefoot</groupId>
         <artifactId>barefoot-parent</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -175,7 +175,7 @@
             <plugin>
                 <groupId>net.sf.barefoot</groupId>
                 <artifactId>barefoot-maven-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <goals>
