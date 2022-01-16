@@ -30,12 +30,12 @@
         <dependency>
             <groupId>org.glassfish.metro</groupId>
             <artifactId>webservices-rt</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.metro</groupId>
             <artifactId>webservices-api</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -108,6 +108,11 @@
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.33</version>
         </dependency>
     </dependencies>
     <build>
