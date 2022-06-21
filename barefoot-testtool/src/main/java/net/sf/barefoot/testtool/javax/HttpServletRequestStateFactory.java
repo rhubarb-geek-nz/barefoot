@@ -56,6 +56,7 @@ public class HttpServletRequestStateFactory {
     state.serverPort = request.getServerPort();
     state.serverName = request.getServerName();
     state.contextPath = request.getContextPath();
+    state.isSecure = request.isSecure();
 
     DispatcherType dispatcherType = request.getDispatcherType();
     if (dispatcherType != null) {

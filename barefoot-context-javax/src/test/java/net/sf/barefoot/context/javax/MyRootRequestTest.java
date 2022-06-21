@@ -70,7 +70,7 @@ public class MyRootRequestTest extends TestBase {
           + " WIBBLE=42\",\"host\":\"127.0.0.1:8080\",\"content-type\":\"text/plain;"
           + " charset=UTF-8\",\"user-agent\":\"curl/7.64.0\",\"accept\":\"*/*\"},\"headers\":{\"content-length\":[\"24\"],\"cookie\":[\"SESSION=ABCD-1234;"
           + " WIBBLE=42\"],\"host\":[\"127.0.0.1:8080\"],\"content-type\":[\"text/plain;"
-          + " charset=UTF-8\"],\"user-agent\":[\"curl/7.64.0\"],\"accept\":[\"*/*\"]},\"characterEncoding\":\"UTF-8\",\"parameterMap\":{\"wibble\":[\"flim\",\"egg\"]},\"pathInfo\":\"/submit/debug\",\"pathTranslated\":null,\"requestURI\":\"/submit/debug\",\"requestURL\":\"http://127.0.0.1:8080/submit/debug\",\"queryString\":\"wibble=flim&wibble=egg\"}";
+          + " charset=UTF-8\"],\"user-agent\":[\"curl/7.64.0\"],\"accept\":[\"*/*\"]},\"isSecure\":false,\"characterEncoding\":\"UTF-8\",\"parameterMap\":{\"wibble\":[\"flim\",\"egg\"]},\"pathInfo\":\"/submit/debug\",\"pathTranslated\":null,\"requestURI\":\"/submit/debug\",\"requestURL\":\"http://127.0.0.1:8080/submit/debug\",\"queryString\":\"wibble=flim&wibble=egg\"}";
 
   static final String REQUEST_TWO =
       "POST /submit/debug?wibble=flim&wibble=egg HTTP/1.1\r\n"
@@ -87,7 +87,7 @@ public class MyRootRequestTest extends TestBase {
   static final String ANSWER_TWO =
       "{\"dispatcherType\":\"REQUEST\",\"method\":\"POST\",\"contentType\":\"application/x-www-form-urlencoded\",\"authType\":null,\"content\":\"\",\"servletPath\":\"\",\"serverName\":\"127.0.0.1\",\"contextPath\":\"\",\"contentLength\":24,\"status\":200,\"serverPort\":8080,\"contentLengthLong\":24,\"header\":{\"content-length\":\"24\",\"cookie\":\"SESSION=ABCD-1234;"
           + " WIBBLE=42\",\"host\":\"127.0.0.1:8080\",\"content-type\":\"application/x-www-form-urlencoded\",\"user-agent\":\"curl/7.64.0\",\"accept\":\"*/*\"},\"headers\":{\"content-length\":[\"24\"],\"cookie\":[\"SESSION=ABCD-1234;"
-          + " WIBBLE=42\"],\"host\":[\"127.0.0.1:8080\"],\"content-type\":[\"application/x-www-form-urlencoded\"],\"user-agent\":[\"curl/7.64.0\"],\"accept\":[\"*/*\",\"text/plain\",\"application/java\"]},\"characterEncoding\":null,\"parameterMap\":{\"ANYTHING\":[\"ELSE\"],\"SOME\":[\"THING\"],\"wibble\":[\"flim\",\"egg\"]},\"pathInfo\":\"/submit/debug\",\"pathTranslated\":null,\"requestURI\":\"/submit/debug\",\"requestURL\":\"http://127.0.0.1:8080/submit/debug\",\"queryString\":\"wibble=flim&wibble=egg\"}";
+          + " WIBBLE=42\"],\"host\":[\"127.0.0.1:8080\"],\"content-type\":[\"application/x-www-form-urlencoded\"],\"user-agent\":[\"curl/7.64.0\"],\"accept\":[\"*/*\",\"text/plain\",\"application/java\"]},\"isSecure\":false,\"characterEncoding\":null,\"parameterMap\":{\"ANYTHING\":[\"ELSE\"],\"SOME\":[\"THING\"],\"wibble\":[\"flim\",\"egg\"]},\"pathInfo\":\"/submit/debug\",\"pathTranslated\":null,\"requestURI\":\"/submit/debug\",\"requestURL\":\"http://127.0.0.1:8080/submit/debug\",\"queryString\":\"wibble=flim&wibble=egg\"}";
 
   @Test
   public void testOne() throws IOException {

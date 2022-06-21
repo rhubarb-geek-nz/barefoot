@@ -52,6 +52,7 @@ public class HttpServletRequestState<T> {
   final Map<String, List<String>> headers;
   final Map<String, String[]> params;
   final List<T> cookies;
+  final Boolean isSecure;
 
   public String getMethod() {
     return method;
@@ -137,6 +138,10 @@ public class HttpServletRequestState<T> {
     return dispatcherType;
   }
 
+  public Boolean getIsSecure() {
+    return isSecure;
+  }
+
   public static class Builder<T> {
     public String method,
         uri,
@@ -158,6 +163,7 @@ public class HttpServletRequestState<T> {
     public Map<String, List<String>> headers = new HashMap<>();
     public Map<String, String[]> params = new HashMap<>();
     public List<T> cookies = new ArrayList<>();
+    public Boolean isSecure;
 
     public HttpServletRequestState<T> build() {
       return new HttpServletRequestState<T>(this);
@@ -187,5 +193,6 @@ public class HttpServletRequestState<T> {
     serverPort = obj.serverPort;
     contextPath = obj.contextPath;
     dispatcherType = obj.dispatcherType;
+    isSecure = obj.isSecure;
   }
 }
