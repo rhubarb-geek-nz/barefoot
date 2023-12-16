@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context>
+    <Resource factory="net.sf.barefoot.context.javax.BarefootServletContextFactory" name="barefoot/context" path="" type="net.sf.barefoot.context.AbstractServletContext"/>
+</Context>

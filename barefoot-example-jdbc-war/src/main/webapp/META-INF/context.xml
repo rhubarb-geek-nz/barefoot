@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context path="/barefoot-example-jdbc-war">
+    <Environment name="barefoot.database.jndi" override="false" type="java.lang.String" value="java:comp/env/jdbc/database"/>
+    <Resource auth="Container" driverClassName="${JDBC_DRIVER_NAME}" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" fairQueue="false" initialSize="0" logAbandoned="true" maxActive="500" maxIdle="100" minIdle="0" name="jdbc/database" removeAbandoned="true" removeAbandonedTimeout="60" singleton="true" testOnBorrow="true" timeBetweenEvictionRunsMillis="30000" type="javax.sql.DataSource" url="${JDBC_CONNECTION_STRING}" validationInterval="20000" validationQuery="SELECT 1"/>
+</Context>

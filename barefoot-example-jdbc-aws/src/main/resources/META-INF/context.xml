@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context>
+    <Resource factory="net.sf.barefoot.context.javax.BarefootServletContextFactory" name="barefoot/context" path="" type="net.sf.barefoot.context.AbstractServletContext"/>
+    <Environment name="barefoot.database.jndi" type="java.lang.String" value="java:comp/env/jdbc/database"/>
+    <Resource driverClassName="${JDBC_DRIVER_NAME}" factory="org.apache.commons.dbcp2.BasicDataSourceFactory" name="jdbc/database" type="javax.sql.DataSource" url="${JDBC_CONNECTION_STRING}"/>
+</Context>
