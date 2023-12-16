@@ -45,14 +45,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSessionAttributeListener;
 import jakarta.servlet.http.HttpSessionListener;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.EventListener;
@@ -62,7 +57,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.Set;
-import java.util.stream.Stream;
 import net.sf.barefoot.context.*;
 import net.sf.barefoot.util.IteratorEnumeration;
 
@@ -118,7 +112,24 @@ public final class BarefootServletContext extends AbstractServletContext impleme
 
   @Override
   public RequestDispatcher getRequestDispatcher(String string) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    BarefootServletRegistration dispatcher = servletPaths.get(string);
+    if (dispatcher == null) {
+      if (!string.isEmpty()) {
+        for (Map.Entry<String, BarefootServletRegistration> entry : servletPaths.entrySet()) {
+          String key = entry.getKey();
+          if (key != null && !key.isEmpty()) {
+            if (string.startsWith(key)) {
+              dispatcher = entry.getValue();
+              break;
+            }
+          }
+        }
+      }
+      if (dispatcher == null) {
+        dispatcher = servletPaths.get(null);
+      }
+    }
+    return new BarefootRequestDispatcher(this, dispatcher, string);
   }
 
   @Override
@@ -338,20 +349,6 @@ public final class BarefootServletContext extends AbstractServletContext impleme
   @Override
   public void onStartup() throws ServletException {
     try {
-      Method serviceLoaderStreamMethod = null;
-      Method providerTypeMethod = null;
-
-      /* This is to use a Java 9 API while compiling with JDK 8. Check to see if those methods exist and use reflection. */
-
-      for (Class c : ServiceLoader.class.getClasses()) {
-        switch (c.getSimpleName()) {
-          case "Provider":
-            providerTypeMethod = c.getMethod("type");
-            serviceLoaderStreamMethod = ServiceLoader.class.getMethod("stream");
-            break;
-        }
-      }
-
       ServiceLoader<ServletContainerInitializer> serviceLoader =
           ServiceLoader.load(ServletContainerInitializer.class, resourceLoader);
       boolean isEmpty = true;
@@ -359,55 +356,15 @@ public final class BarefootServletContext extends AbstractServletContext impleme
       for (ServletContainerInitializer init : serviceLoader) {
         isEmpty = false;
         Set<Class<?>> setClasses = new HashSet<>();
-        Set<String> setClassNames = serviceLoaderStreamMethod == null ? new HashSet<>() : null;
         Annotation[] annotations = init.getClass().getAnnotations();
 
         for (Annotation annotation : annotations) {
           if (annotation instanceof HandlesTypes) {
             HandlesTypes handlesTypes = (HandlesTypes) annotation;
 
-            /* With Java 9 this can be done with a new ServiceLoader for the new type and stream().forEach(ServiceLoader.Provider) */
-
             for (Class<?> type : handlesTypes.value()) {
-              if (serviceLoaderStreamMethod != null && providerTypeMethod != null) {
-                ServiceLoader<?> classLoader = ServiceLoader.load(type, resourceLoader);
-                Stream stream = (Stream) serviceLoaderStreamMethod.invoke(classLoader);
-                Method providerType = providerTypeMethod;
-                stream.forEach(
-                    (provider) -> {
-                      try {
-                        setClasses.add((Class<?>) providerType.invoke(provider));
-                      } catch (IllegalAccessException | InvocationTargetException ex) {
-                        throw new RuntimeException(ex);
-                      }
-                    });
-              } else {
-                String path = "META-INF/services/" + type.getCanonicalName();
-
-                Enumeration<URL> res = resourceLoader.getResources(path);
-
-                while (res.hasMoreElements()) {
-                  URL url = res.nextElement();
-
-                  try (BufferedReader reader =
-                      new BufferedReader(
-                          new InputStreamReader(url.openStream(), StandardCharsets.UTF_8))) {
-                    String line;
-
-                    while (null != (line = reader.readLine())) {
-                      line = line.trim();
-                      if (!line.isEmpty() && line.charAt(0) != '#') {
-                        /* avoid loading the class if we already have it by name */
-                        if (!setClassNames.contains(line)) {
-                          Class<?> classOfType = resourceLoader.loadClass(line);
-                          setClasses.add(classOfType);
-                          setClassNames.add(line);
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              ServiceLoader<?> classLoader = ServiceLoader.load(type, resourceLoader);
+              classLoader.stream().forEach(provider -> setClasses.add(provider.type()));
             }
           }
         }

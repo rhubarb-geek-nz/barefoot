@@ -21,6 +21,7 @@
 
 package net.sf.barefoot.context.jakarta;
 
+import jakarta.servlet.DispatcherType;
 import jakarta.servlet.MultipartConfigElement;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.Servlet;
@@ -31,6 +32,8 @@ import jakarta.servlet.ServletRegistration;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.ServletSecurityElement;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import java.io.IOException;
 import java.util.Set;
 import net.sf.barefoot.context.AbstractServletRegistration;
@@ -40,6 +43,7 @@ public final class BarefootServletRegistration extends AbstractServletRegistrati
     implements ServletRegistration.Dynamic, ServletConfig, RequestDispatcher {
   final Servlet servlet;
   final ServletContext servletContext;
+  MultipartConfigElement multipartConfigElement;
 
   /** creates a holder for the servlet registration information */
   BarefootServletRegistration(ServletContext ctx, String string, Servlet srvlt) {
@@ -59,8 +63,8 @@ public final class BarefootServletRegistration extends AbstractServletRegistrati
   }
 
   @Override
-  public void setMultipartConfig(MultipartConfigElement arg0) {
-    throw new UnsupportedOperationException("Not supported yet.");
+  public void setMultipartConfig(MultipartConfigElement multipartConfigElement) {
+    this.multipartConfigElement = multipartConfigElement;
   }
 
   @Override
@@ -78,11 +82,23 @@ public final class BarefootServletRegistration extends AbstractServletRegistrati
 
   @Override
   public void forward(ServletRequest sr, ServletResponse sr1) throws ServletException, IOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    invoke(DispatcherType.FORWARD, sr, sr1);
   }
 
   @Override
   public void include(ServletRequest sr, ServletResponse sr1) throws ServletException, IOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    invoke(DispatcherType.INCLUDE, sr, sr1);
+  }
+
+  void invoke(DispatcherType dispatcherType, ServletRequest sr, ServletResponse sr1)
+      throws ServletException, IOException {
+    servlet.service(
+        new HttpServletRequestWrapper((HttpServletRequest) sr) {
+          @Override
+          public DispatcherType getDispatcherType() {
+            return dispatcherType;
+          }
+        },
+        sr1);
   }
 }
