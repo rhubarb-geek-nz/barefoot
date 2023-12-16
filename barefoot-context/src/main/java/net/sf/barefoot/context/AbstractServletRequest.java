@@ -57,6 +57,7 @@ public abstract class AbstractServletRequest {
       url,
       contentType,
       queryString,
+      charEncoding,
       authType,
       remoteAddr,
       remoteHost,
@@ -72,7 +73,6 @@ public abstract class AbstractServletRequest {
   protected final Supplier<Reader> reader;
   protected boolean alreadyOpen = false;
   protected AbstractServletSession httpSession;
-  protected String charEncoding;
 
   protected AbstractServletRequest(Builder builder) {
     method = builder.method;
@@ -207,7 +207,7 @@ public abstract class AbstractServletRequest {
   }
 
   public void setCharacterEncoding(String string) throws UnsupportedEncodingException {
-    charEncoding = string;
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   public int getContentLength() {

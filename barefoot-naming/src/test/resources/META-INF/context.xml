@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Context path="">
-    <Environment name="net.sf.barefoot.context.xml.foo" override="false" type="java.lang.String" value="foo value"/>
-    <Environment name="net.sf.barefoot.context.xml.bar" override="false" type="java.lang.String" value="bar value"/>
-    <Resource auth="Container" driverClassName="${JDBC_DRIVER_NAME}" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" fairQueue="false" initialSize="0" logAbandoned="true" maxActive="500" maxIdle="100" minIdle="0" name="jdbc/tomcat/dbcp" removeAbandoned="true" removeAbandonedTimeout="60" testOnBorrow="true" timeBetweenEvictionRunsMillis="30000" type="javax.sql.DataSource" url="${JDBC_CONNECTION_STRING}" validationInterval="20000" validationQuery="SELECT 1"/>
-    <Resource auth="Container" connectionTimeout="300000" driverClassName="${JDBC_DRIVER_NAME}" factory="com.zaxxer.hikari.HikariJNDIFactory" jdbcUrl="${JDBC_CONNECTION_STRING}" maximumPoolSize="10" minimumIdle="5" name="jdbc/hikari" type="javax.sql.DataSource"/>
-</Context>

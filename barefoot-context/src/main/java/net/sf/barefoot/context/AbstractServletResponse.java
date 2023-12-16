@@ -227,7 +227,7 @@ public abstract class AbstractServletResponse {
   }
 
   public void reset() {
-    headers.clear();
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   public void setLocale(Locale l) {

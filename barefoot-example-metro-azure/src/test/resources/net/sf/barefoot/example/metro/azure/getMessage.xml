@@ -1,6 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="https://wsdl.example.barefoot.sf.net">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <wsdl:getMessage/>
-   </soapenv:Body>
-</soapenv:Envelope>

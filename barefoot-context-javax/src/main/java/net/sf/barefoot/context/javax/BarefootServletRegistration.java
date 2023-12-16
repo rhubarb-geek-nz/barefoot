@@ -23,7 +23,6 @@ package net.sf.barefoot.context.javax;
 
 import java.io.IOException;
 import java.util.Set;
-import javax.servlet.DispatcherType;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
@@ -34,8 +33,6 @@ import javax.servlet.ServletRegistration;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.ServletSecurityElement;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import net.sf.barefoot.context.AbstractServletRegistration;
 
 /** Concrete servlet registation */
@@ -43,7 +40,6 @@ public final class BarefootServletRegistration extends AbstractServletRegistrati
     implements ServletRegistration.Dynamic, ServletConfig, RequestDispatcher {
   final Servlet servlet;
   final ServletContext servletContext;
-  MultipartConfigElement multipartConfigElement;
 
   /** creates a holder for the servlet registration information */
   BarefootServletRegistration(ServletContext ctx, String string, Servlet srvlt) {
@@ -63,8 +59,8 @@ public final class BarefootServletRegistration extends AbstractServletRegistrati
   }
 
   @Override
-  public void setMultipartConfig(MultipartConfigElement multipartConfigElement) {
-    this.multipartConfigElement = multipartConfigElement;
+  public void setMultipartConfig(MultipartConfigElement arg0) {
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
@@ -82,23 +78,11 @@ public final class BarefootServletRegistration extends AbstractServletRegistrati
 
   @Override
   public void forward(ServletRequest sr, ServletResponse sr1) throws ServletException, IOException {
-    invoke(DispatcherType.FORWARD, sr, sr1);
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 
   @Override
   public void include(ServletRequest sr, ServletResponse sr1) throws ServletException, IOException {
-    invoke(DispatcherType.INCLUDE, sr, sr1);
-  }
-
-  void invoke(DispatcherType dispatcherType, ServletRequest sr, ServletResponse sr1)
-      throws ServletException, IOException {
-    servlet.service(
-        new HttpServletRequestWrapper((HttpServletRequest) sr) {
-          @Override
-          public DispatcherType getDispatcherType() {
-            return dispatcherType;
-          }
-        },
-        sr1);
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 }
